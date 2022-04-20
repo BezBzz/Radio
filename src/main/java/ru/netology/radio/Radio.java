@@ -5,6 +5,7 @@ public class Radio {
     private int volumeLevel;
 
     public int getCurrentRadioWave() {
+
         return currentRadioWave;
     }
 
@@ -39,7 +40,7 @@ public class Radio {
     }
 
     public int getVolumeLevel() {
-        return volumeLevel;
+                return volumeLevel;
     }
 
     public void setVolumeLevel(int volumeLevel) {
@@ -55,7 +56,7 @@ public class Radio {
     public void setNextVolumeLevel() {
         int nextVolumeLevel = volumeLevel + 1;
         {
-            if (nextVolumeLevel > 10) {
+            if (nextVolumeLevel >= 10) {
                 nextVolumeLevel = 10;
             }
         }
