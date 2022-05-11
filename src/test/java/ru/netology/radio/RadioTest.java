@@ -7,21 +7,30 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
 
     @Test
-    void setCurrentRadioWave() {
+    void setCurrentRadioWaveMin() {
         Radio cond = new Radio();
-        cond.setCurrentRadioWave(8);
-        int expected = 8;
-        int actual = cond.getCurrentRadioWave();
-        assertEquals(expected, actual);
-    }
-    @Test
-    void setCurrentRadioWaveBelow() {
-        Radio cond = new Radio();
-        cond.setCurrentRadioWave(-1);
         int expected = 0;
-        int actual = cond.getCurrentRadioWave();
-        assertEquals(expected, actual);
+        cond.setCurrentRadioWave(-1);
+        assertEquals(expected, cond.getCurrentRadioWave());
     }
+
+    @Test
+    void setCurrentRadioWaveDefault() {
+        Radio cond = new Radio();
+        int expected = 0;
+        cond.setCurrentRadioWave(12);
+        assertEquals(expected, cond.getCurrentRadioWave());
+    }
+
+    @Test
+    void setCurrentRadioWaveCustom() {
+        int sumStation = 15;
+        Radio cond = new Radio(sumStation);
+        int expected = 14;
+        cond.setCurrentRadioWave(14);
+        assertEquals(expected, cond.getCurrentRadioWave());
+    }
+
     @Test
     void setCurrentRadioWaveHigher() {
         Radio cond = new Radio();
@@ -79,10 +88,29 @@ class RadioTest {
         int actual = cond.getVolumeLevel();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void setVolumeLevelMax() {
+        Radio cond = new Radio();
+        cond.setVolumeLevel(101);
+        int expected = 0;
+        int actual = cond.getVolumeLevel();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void setVolumeLevelMaximum() {
+        Radio cond = new Radio();
+        cond.setVolumeLevel(101);
+        int expected = 0;
+        int actual = cond.getVolumeLevel();
+        assertEquals(expected, actual);
+    }
+
     @Test
     void setVolumeLevelHigher() {
         Radio cond = new Radio();
-        cond.setVolumeLevel(11);
+        cond.setVolumeLevel(101);
         int expected = 0;
         int actual = cond.getVolumeLevel();
         assertEquals(expected, actual);
@@ -93,20 +121,29 @@ class RadioTest {
         Radio cond = new Radio();
         cond.setVolumeLevel(10);
         cond.setNextVolumeLevel();
-        int expected = 10;
-        int actual = cond.getVolumeLevel();
-        assertEquals(expected, actual);
-    }
-    @Test
-    void nextVolumeLevel() {
-        Radio cond = new Radio();
-        cond.setVolumeLevel(8);
-        cond.setNextVolumeLevel();
-        int expected = 9;
+        int expected = 11;
         int actual = cond.getVolumeLevel();
         assertEquals(expected, actual);
     }
 
+    @Test
+    void nextVolumeLevel() {
+        Radio cond = new Radio();
+        cond.setVolumeLevel(100);
+        cond.setNextVolumeLevel();
+        int expected = 100;
+        int actual = cond.getVolumeLevel();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void nextVolumeLevelMax() {
+        Radio cond = new Radio();
+        cond.setVolumeLevel(101);
+        cond.setNextVolumeLevel();
+        int expected = 1;
+        assertEquals(expected, cond.getVolumeLevel());
+    }
 
     @Test
     void prevVolumeLevel() {
@@ -117,6 +154,7 @@ class RadioTest {
         int actual = cond.getVolumeLevel();
         assertEquals(expected, actual);
     }
+
     @Test
     void prevVolumeLevelBelow() {
         Radio cond = new Radio();

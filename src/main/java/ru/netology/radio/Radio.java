@@ -2,7 +2,18 @@ package ru.netology.radio;
 
 public class Radio {
     private int currentRadioWave;
+    private int minRadioStation = 0;
+    private int maxRadioStation = 9;
     private int volumeLevel;
+    private int minVolume = 0;
+    private int maxVolume = 100;
+
+    public Radio(int sumRadioStation) {
+        this.maxRadioStation = sumRadioStation - 1;
+    }
+
+    public Radio() {
+    }
 
     public int getCurrentRadioWave() {
 
@@ -10,10 +21,10 @@ public class Radio {
     }
 
     public void setCurrentRadioWave(int currentRadioWave) {
-        if (currentRadioWave < 0) {
+        if (currentRadioWave < minRadioStation) {
             return;
         }
-        if (currentRadioWave > 9) {
+        if (currentRadioWave > maxRadioStation) {
             return;
         }
         this.currentRadioWave = currentRadioWave;
@@ -22,8 +33,8 @@ public class Radio {
     public void setNext() {
         int nextCurrentRadioWave = currentRadioWave + 1;
         {
-            if (nextCurrentRadioWave > 9) {
-                nextCurrentRadioWave = 0;
+            if (nextCurrentRadioWave > maxRadioStation) {
+                nextCurrentRadioWave = minRadioStation;
             }
         }
         this.currentRadioWave = nextCurrentRadioWave;
@@ -32,22 +43,22 @@ public class Radio {
     public void setPrev() {
         int prevCurrentRadioWave = currentRadioWave - 1;
         {
-            if (prevCurrentRadioWave < 0) {
-                prevCurrentRadioWave = 9;
+            if (prevCurrentRadioWave < minRadioStation) {
+                prevCurrentRadioWave = maxRadioStation;
             }
         }
         this.currentRadioWave = prevCurrentRadioWave;
     }
 
     public int getVolumeLevel() {
-                return volumeLevel;
+        return volumeLevel;
     }
 
     public void setVolumeLevel(int volumeLevel) {
-        if (volumeLevel < 0) {
+        if (volumeLevel < minVolume) {
             return;
         }
-        if (volumeLevel > 10) {
+        if (volumeLevel > maxVolume) {
             return;
         }
         this.volumeLevel = volumeLevel;
@@ -56,8 +67,8 @@ public class Radio {
     public void setNextVolumeLevel() {
         int nextVolumeLevel = volumeLevel + 1;
         {
-            if (nextVolumeLevel >= 10) {
-                nextVolumeLevel = 10;
+            if (nextVolumeLevel > maxVolume) {
+                nextVolumeLevel = maxVolume;
             }
         }
         this.volumeLevel = nextVolumeLevel;
@@ -66,8 +77,8 @@ public class Radio {
     public void setPrevVolumeLevel() {
         int prevVolumeLevel = volumeLevel - 1;
         {
-            if (prevVolumeLevel < 0) {
-                prevVolumeLevel = 0;
+            if (prevVolumeLevel < minVolume) {
+                prevVolumeLevel = minVolume;
             }
         }
         this.volumeLevel = prevVolumeLevel;
