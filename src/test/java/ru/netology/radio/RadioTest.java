@@ -11,7 +11,6 @@ class RadioTest {
         Radio cond = new Radio();
         int expected = 0;
         cond.setCurrentRadioWave(-1);
-
         assertEquals(expected, cond.getCurrentRadioWave());
     }
 
@@ -20,7 +19,6 @@ class RadioTest {
         Radio cond = new Radio();
         int expected = 0;
         cond.setCurrentRadioWave(12);
-
         assertEquals(expected, cond.getCurrentRadioWave());
     }
 

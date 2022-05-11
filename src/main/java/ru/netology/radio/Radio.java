@@ -9,11 +9,11 @@ public class Radio {
     private int maxVolume = 100;
 
     public Radio(int sumRadioStation) {
-        this.maxRadioStation = sumRadioStation -1;
+        this.maxRadioStation = sumRadioStation - 1;
     }
-public Radio() {
 
-}
+    public Radio() {
+    }
 
     public int getCurrentRadioWave() {
 
@@ -51,7 +51,7 @@ public Radio() {
     }
 
     public int getVolumeLevel() {
-                return volumeLevel;
+        return volumeLevel;
     }
 
     public void setVolumeLevel(int volumeLevel) {
